@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isMember(orgId) {
+      return signedIn() && exists(/databases/$(database)/documents/organizations/$(orgId)/members/$(request.auth.uid));
+    }
+    function hasRole(orgId, roles) {
+      return isMember(orgId) && get(/databases/$(database)/documents/organizations/$(orgId)/members/$(request.auth.uid)).data.role in roles;
+    }
+    match /organizations/{orgId} {
+      allow read: if isMember(orgId);
+      allow create: if signedIn();
+      allow update: if hasRole(orgId, ['owner','admin']);
+      allow delete: if hasRole(orgId, ['owner']);
+      match /members/{uid} {
+        allow read: if isMember(orgId);
+        allow write: if hasRole(orgId, ['owner','admin']);
+      }
+      match /{collection}/{docId} {
+        allow read: if isMember(orgId);
+        allow create, update: if hasRole(orgId, ['owner','admin','analyst']);
+        allow delete: if hasRole(orgId, ['owner','admin']);
+      }
+    }
+    match /users/{uid} { allow read, write: if signedIn() && request.auth.uid == uid; }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
