@@ -1,71 +1,32 @@
-# OMNeXa Vercel Website
+# SwayamITR — an OMNeXa initiative
 
-A premium one-page consulting website for OMNeXa Pte. Ltd. built with Next.js App Router and ready for Vercel deployment.
+Privacy-first Next.js Preview for preparing an Indian individual income-tax return for AY 2026–27.
 
-## What is included
+## Current Preview scope
 
-- Premium responsive landing page
-- Services and six OMNeXa pillars
-- Human + AI future-readiness section
-- Founder / About section
-- Client feedback / testimonials
-- Contact form with name, email, phone, organisation, interest and message capture
-- Server-side contact form email route using Resend
+- ITR form eligibility screening for common individual cases.
+- AY 2026–27 old/new regime estimate for normal-rate income.
+- Salary, interest, positive house-property income, Chapter VI-A deductions and tax-credit capture.
+- Browser-only working state with internal XML import/export.
+- Filing-readiness checks and official portal hand-off.
+
+This Preview does not create an Income Tax Department-compatible JSON file and does not submit or e-verify a return. Direct filing requires an approved e-Return Intermediary integration and current-schema validation.
 
 ## Local setup
 
 ```bash
 npm install
-cp .env.example .env.local
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+## Deployment
 
-## Email setup with Resend
+The project is designed for Vercel Preview deployments. Set `NEXT_PUBLIC_SITE_URL` after selecting the final OMNeXa subdomain. Suggested future domain: `swayamitr.omnexagoc.com`.
 
-1. Create a Resend account.
-2. Verify your sending domain, ideally `omnexagoc.com`.
-3. Create an API key.
-4. In `.env.local`, add:
+## Production roadmap
 
-```bash
-RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxx
-CONTACT_TO_EMAIL=dhiraj.kumar@omnexagoc.com
-CONTACT_FROM_EMAIL=OMNeXa Website <noreply@omnexagoc.com>
-```
-
-For production, add the same variables in Vercel:
-
-`Project Settings` → `Environment Variables` → Add each key → Redeploy.
-
-## Deploy to Vercel
-
-1. Push this folder to a GitHub repository.
-2. Log in to Vercel.
-3. Click `Add New` → `Project`.
-4. Import the GitHub repository.
-5. Add the environment variables above.
-6. Click `Deploy`.
-
-## Custom domain
-
-After deployment, in Vercel:
-
-`Project Settings` → `Domains` → Add your domain, for example:
-
-- `omnexagoc.com`
-- `www.omnexagoc.com`
-
-Then update DNS as instructed by Vercel.
-
-## Files to customize
-
-- `lib/site-data.ts` — services, testimonials, navigation, stats
-- `app/page.tsx` — page structure
-- `app/globals.css` — design system, colors and layout
-- `app/api/contact/route.ts` — email logic
-
-## Important note
-
-The contact form will only send email after `RESEND_API_KEY` is configured and the sender domain is verified. Until then, the page can be deployed and viewed, but form submissions will return an email configuration message.
+1. Add Supabase authentication and encrypted user-owned return storage.
+2. Import official prefilled JSON plus structured Form 16/AIS/26AS data.
+3. Implement the complete current ITR-1 JSON schema and validation rules.
+4. Add Type-2 ERI integration or an approved filing partner for prefill, submission and e-verification.
+5. Complete security, privacy, tax-domain and audit-control assurance before production use.

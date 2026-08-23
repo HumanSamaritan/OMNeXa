@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">SwayamITR</title>
+  <desc id="desc">Self-file with confidence — an OMNeXa initiative</desc>
+  <rect width="1200" height="630" fill="#f7f8f4"/>
+  <rect x="46" y="44" width="8" height="542" rx="4" fill="#ef9c42"/>
+  <circle cx="1070" cy="76" r="190" fill="#e6f1ed"/>
+  <path d="M815 134h322v344H815z" fill="#fff" stroke="#dce5e2" stroke-width="3" transform="rotate(-7 976 306)"/>
+  <path d="M851 205h214M851 253h214M851 301h168M851 349h214M851 397h130" stroke="#cbdad6" stroke-width="4" stroke-linecap="round" transform="rotate(-7 976 306)"/>
+  <text x="102" y="278" fill="#0b635b" font-family="Arial, Helvetica, sans-serif" font-size="96" font-weight="750" letter-spacing="-4">SwayamITR</text>
+  <text x="108" y="352" fill="#142322" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="600">Self-file with confidence</text>
+  <text x="110" y="432" fill="#667473" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="2">AN OMNeXa INITIATIVE</text>
+</svg>

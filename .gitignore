@@ -1,5 +1,8 @@
-node_modules
-.next
-.vercel
-.env*.local
+node_modules/
+.next/
+.vercel/
+.env*
+!.env.example
+npm-debug.log*
+generated_images/
 .DS_Store
